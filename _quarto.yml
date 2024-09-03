@@ -1,0 +1,18 @@
+project:
+  type: website
+  render:
+    - handover.qmd
+    
+website:
+  title: "Handover Data Specialist PHU"
+  sidebar:
+    contents:
+      - handover.qmd
+
+format:
+  html:
+    toc: true
+    theme:
+      - simplex
+    embed-resources: true
+        
