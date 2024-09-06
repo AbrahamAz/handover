@@ -1,10 +1,163 @@
 ---
-title: "Handover and Guidelines"
+title: "PHU Data Specialist Instruction/Guidelines Handbook"
 author: "Abraham Azar"
 date: last-modified
 ---
 
-# Contents
+# Introduction
 
-This is Abraham
-  
+This handbook is dedicated for the next Data Specialist taking over the position within the Public Health Unit in the Global Programmes department at HQ. The book dives into each aspect of the position, showcasing step by step guidances on how to run the exisitng tools and how to maintain them. 
+
+I will try my best to be as detailed as possible, but do know that other data/technical people will also have answers to all your questions.
+
+# Tools
+
+## impactR4PHU
+
+[healthyR](https://github.com/SaeedR1987/healthyr), a tool built by Saeed Rahman (current PHU Unit Manager), has been a crucial tool for checking, cleaning and analysing the data of almost all the outcome indicators of the different sectors of Public Health (Health/Nutrition/Food Security & Livelihoods - FSL/WASH). 
+
+[impactR4PHU](https://github.com/impact-initiatives/impactR4PHU) followed the same original content structure of heathyR, but addressed some of the feedback from the users, as well as some other bugs/issues. The package also introduced project templates for fast implementations of the processes. 
+
+This package is following a [Test-Driven Development](https://www.techtarget.com/searchsoftwarequality/definition/test-driven-development) where unit testing, programming, and refactoring of the source code is addapted during development stages. 
+
+### Content
+
+Here is a quick dissection of the GitHub Repo, but please do check the READ ME Section for a better description of each component. 
+
+#### **main branch**
+
+##### **R Folder**
+
+This folder includes all the functions that are used by the Public Health Unit for *creating*, *adding*, *checking*, and *ploting* data within different processes. Almost all functions have a test unit script using the [testthat](https://testthat.r-lib.org/) package. The tests can be access through the testing branch. Some of the functions are helpers functions and do not include testers. 
+    
+All functions are built in a way that can be piped within the **dplyr** system of piping.
+
+Once you have checked all the functions, you might ask yourself a question. 
+
+> *"Where are the functions related to Health and WASH?"* 
+
+They exist, but not in this package. At Impact, we love to share tasks sometimes, mainly when it is used for specific purposes in other units. You will be able to find these respective functions in the [humind](https://github.com/impact-initiatives-hppu/humind) package. The humind package is built to address main calculations for indicators collected through the MSNA (Multi-Sectoral Needs Assessment). To know more about this assessment or the package, please reach out to the HPPU Unit colleagues.
+
+All functions are well documented using Roxygen, and some funcitons are running some examples using dummy data included in the package. 
+
+##### **data Folder**
+
+This folder includes different dummy datasets used within the examples inside the functions, but also within the test units. 
+
+##### **inst Folder**
+
+This folder includes different project templates:
+
+- FSL: Food Security and Livelihoods.
+- IYCF: Infant Youth Consumption Food TO CHECK
+- Mortality
+- IPHRA: Integrated Public Health Rapid Assessment
+- Public Health integrated tables
+
+You might ask yourself another question here.
+
+> *Why do we have templates if there are already functions?*
+
+Good question!! But here is the answer.
+
+Impact's field missions are widely different when it come to data resources, capacity, and knowledge. Some missions do not even have data officers. So these templates exists to make the life of users with little knowledge of R easier and faster. They only need to set up R and R Studio on their machines, and run the respective scripts. 
+
+These project templates can easily be accessed through the "New Project" button in R Studio after installing the Package
+
+> devtools::install_github("impact-initiatives/impactR4PHU")
+
+The scripts interacts with the users through inputs system. Inputs here are very important to make sure that the scripts are outputing the correct intentions.
+
+Please make sure to refer back to the respective specialists within the Public Health Unit so they can help you with what to select what when it comes to running the scripts.
+
+- Mortality: Noortje Gerritzma
+- FSL: Olivia Falkowitz
+- IYCF: Martin 
+- IPHRA: PH team
+- PH Integrated Tables: PH team or Olivia. 
+
+Mortality, FSL, and IYCF have 3 templates:
+
+- Plausibility and Quality Reports
+- Cleaning
+- Descriptive analysis.
+
+IPHRA have 2 templates:
+
+- Cleaning
+- Analysis
+
+PH integrated Tables have only 1 template. 
+
+All the details needed are explained in the READ ME sections of the github page. 
+
+#### **testing branch**
+
+##### **tests Folder** 
+
+Using the testthat package, and followint the TDD method, all functions have been tested following the good and bad path to make sure that they are outputing the expected results. Please do ensure to build tests always with every added functions, and feel free to add tests to existing functions. 
+
+### Maintenance
+
+If changes, improvements, enhancements, add-ons are required to the package, please use the following process to ensure a smooth merging to the main branch. 
+
+First, clone the main package to your local machine and create a new branch for your work. 
+If functions are created/ammended, **please** make sure to checkout to the testing branch and do the necessary work there to keep the package trusted and correctly functioning. 
+
+Once done, go ahead commit and push your changes to your respective branch, and open a pull requests. 
+
+Once you create the pull request, some Github Actions will run in teh background to ensure that the package is functional and installable in different operating systems and the coverage test badge is updated. If all the actions pass the tests, I set a requirement here to have a review and validation by another person. However, as a solo data person in the unit, this can be bypassed and merge can be confirmed. 
+
+Github will again run another test of the Actions and pass a green badge to the R CMD Check. 
+
+> The job is not yet done !!
+
+As all the templates are using there own specific renv environment that also include the impactR4PHU github package, all these renv of the different templates should be updated to the newest version of the package. 
+
+I created a python script that update them automatically instead of accessing them one by one. Here is a link to the python script [link](/files/pythonscript.py) (ADD THE FILE HERE)
+
+Once the script is done, please go again to your local branch where the new changes have been made and you will realise that all renv.lock files have now updated and require a new commit, push and pull for github. I know this is a bit of an annoying process, please go ahead and change it to your convenience. 
+
+### Requirements
+
+- Please inform users to always re-install the package so they can access the latest version, especially if you are constantly enhancing/improving/changing something within the package. This is required because of the renv.locks that includes all newest packages requirements. 
+
+- Each template have a renv::update() function in the beginning which is responsible of updating the relevant packages to the latest requirements for the dependencies. However, R sometimes love to be hard and try to break everything. I realized this after receiving some weird **"make error"** from the field. Kindly keep an eye on that. 
+
+### Next Steps Suggestions
+
+As the rotation within Impact is relatively high, you should consider having regular refreshers for missions/HQ Global Programs (GP) and Research Department (RDD) on the usage of the package and mainly the templates. 
+
+> *"Why GP and RDD included?"*
+
+Because, they do use the plausibility and quality report, mainly FSL, to check the data that is sent from missions for validation to HQ.
+
+> *Better way than R templates?*
+
+My original plan was to create one whole system (software) that compile all the processes and be even more user friendly then still running R codes. However, this takes so much time to implement and we didn't have the time. 
+So maybe this is something that can be done as a project.
+
+### Knowledge requirements to run/maintain/enhance
+
+- **R:** *Advanced*
+- **Git and Github Actions:** *Advanced*
+- **Test-Driven Deveopment:** *Advanced*
+- **Kobo:** *Intermediate*
+- **Python:** *Beginner*
+
+## RLC Sampling
+
+
+### Actions
+
+### Requirements
+
+### Maintenance
+
+### Next Steps Suggestions
+
+
+# Projects
+
+## Remote Mortality Studies in DRC
+

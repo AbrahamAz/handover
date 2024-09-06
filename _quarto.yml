@@ -4,7 +4,7 @@ project:
     - handover.qmd
     
 website:
-  title: "Handover Data Specialist PHU"
+  title: "PHU Data Specialist Instruction/Guidelines Handbook"
   sidebar:
     contents:
       - handover.qmd
