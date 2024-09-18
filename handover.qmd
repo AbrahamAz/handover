@@ -6,7 +6,7 @@ date: last-modified
 
 # Introduction
 
-This handbook is dedicated for the next Data Specialist taking over the position within the Public Health Unit in the Global Programmes department at HQ. The book dives into each aspect of the position, showcasing step by step guidances on how to run the exisitng tools and how to maintain them. 
+This handbook is dedicated for the next Data Specialist taking over the position within the Public Health Unit in the Global Programmes department at HQ. The book dives into each aspect of the position, showcasing step by step guidances on how to run the existing tools and how to maintain them. 
 
 I will try my best to be as detailed as possible, but do know that other data/technical people will also have answers to all your questions.
 
