@@ -141,21 +141,94 @@ So maybe this is something that can be done as a project.
 
 - **R:** *Advanced*
 - **Git and Github Actions:** *Advanced*
-- **Test-Driven Deveopment:** *Advanced*
+- **Test-Driven Development:** *Advanced*
 - **Kobo:** *Intermediate*
 - **Python:** *Beginner*
 
-## RLC Sampling
+## RLC (Random Location Cluster) Sampling Scripts 
 
+This Github Repo is [LINK](https://github.com/AbrahamAz/rlc_sample) is dedicated for checking the quality of the data collection using the Random Location Cluster sampling or RLC for short as well as producing the weights for the different clusters. 
 
-### Actions
+To understand more about RLC, please check the presentations and the registrations available in the handover folder.
+
+In a nutshell, RLC is a sampling method that requires to define a populated area, and randomly select N amount of GPS locations within this area. Once defined, the 3 nearest neighbouring HH to the defined GPS location are assessed. 
+
+I created a Kobo tool called REACH GEO RAND that allows you to go to the field and trace the areas of interested and the tool will automatically generate N random points within this area with their respective UNIQUE IDs. Please check the presentation of the tool in the handover folder. 
+
+The output is an html report including:
+
+ - *ID MATCHING*: Check Cluster_ID between sampling and rlc data are matching
+ - *Clusters inside Area*: Check Clusters are inside the sampling area (50m threshold)
+ - *Clusters follow RLC sampling*: Check assessed clusters are random and follow the sampling (50m threshold)
+ - *HHs inside sampling area*: Check assessed HHs are inside the sampling are (50m threshold)
+ - *Distance HHs to clusters*: Check the distance between the assessed HHs and the sampled cluster points (50m threshold)
+ - *Duplicated clusters/HHs*: Check duplication between clusters and check if clusters share same HHs.
+ - *Household Density*: Calculate HH Density & Cluster Weights
+ - *IDW*: Spatial Interpolation using Inverse Distance Weighing (IDW)
+ - *Estimation of Population*: Estimate Population of Sampled Area. (Under Revision)
+ 
+ As well as an Excel file that includes the weights.
 
 ### Requirements
 
+This script are built using the REACH GEO RAND output data that consists of:
+
+- **Sheet including the traced areas**
+- **Sheet including the randomly generated points**
+
+As well as your assessment data following the RLC sampling methodology that includes:
+
+- **UNIQUE IDs of the randomly generated points**
+- **GPS locations of the randomly generated points**
+- **GPS locations of the 3 assessed HHs**
+- **Number of individuals inside each HH**
+
+### Content
+
+#### **main branch**
+
+##### **data folder**
+
+This folder includes some dummy data for testing the scripts. Both correct data and bad data.
+
+##### **output folder**
+
+This folder includes the outputted HTML & Excel files of both the correct and wrong data. 
+
+##### **resources folder**
+
+This folder includes all the images/logos/local R packages needed to run the script in general. 
+
+##### **src folder**
+
+This folder includes multiple R scripts:
+
+- *init.R*: This script is used to install and load all the packages needed for this scripts. 
+- *rlc_quality_check.R* & *rlc_quality_check_fast_track.R*: These are scripts that contains all the functions needed to perform the quality checks and create the outputs.
+
+Also it includes a *utils folder* which includes all the other utility functions needed for cleaning/analysing/reporting. 
+
+##### *main folder*
+
+This folder includes multiple R, Rmd, and batch files. Below is the explanation of each:
+
+
+- **FAST TRACK**: 
+  - *fast_track.R*: I automated the process to be able to run the whole script outside of R. this script is designated to initiate the project and render the Markdown. 
+  - *fast_track.bat*: Batch file to run the whole process from outside of R. 
+  - *rlc_sample_template_fast_track.Rmd*: The Markdown project that is called inside fast_track.R
+  
 ### Maintenance
+
+There are no maintenance needed for this projects. However, in case of errors, the file to be tracked is the rlc_sample_template_fast_track.Rmd, where you will be able to run each chunck and see where is the error happening. 
 
 ### Next Steps Suggestions
 
+One suggestion that I advice for this project is the ability to not only be limited by the REACH GEO RAND as input for the defined area of the study. This will enable to check any RLC sampling methodology for sanity and quality of the data collection.
+
+To change this, it will be required to find a way to provide the assessed households under the RLC Sampling methodology with a unique identifier for each cluster, and be able as well to define an area and input it in the script as a geometry polygon instead of the REACH GEO RAND. 
+
+Most of the function inside src/rlc_quality_checks.R & src/rlc_quality_checks_fast_track.R will be affected by this change, as well as the markdown file. 
 
 # Projects
 
