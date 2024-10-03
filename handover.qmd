@@ -253,7 +253,13 @@ Below is the full explanation of the folder structure.
 - *network_survival_data_clean.xlsx*: This is the cleaned Network Survival Data. 
 - *Population DPS TANG023_ZS_AS_VILLAGE BICRS_revised.xlsx*: This is the Population Data for the ZS/AS used. 
 
+#### map folder
 
+- *.csv/.xlsx*: These files are the outputs from the QGIS project to use for the Urban/Rural disaggregations. 
+- *rural_urban.qgz*: QGIS Project file. 
+- *Catchment_sites and Donnees_DRC_Tanganyika*: These folders include the shapefiles needed for the inputs to the QGIS project. 
+
+#### output folder
 
 
 
