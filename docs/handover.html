@@ -4986,6 +4986,14 @@ vertical-align: -.125em;
 <h3 class="anchored" data-anchor-id="content-1">Content</h3>
 <section id="main-branch-1" class="level4">
 <h4 class="anchored" data-anchor-id="main-branch-1"><strong>main branch</strong></h4>
+<section id="data-folder-1" class="level5">
+<h5 class="anchored" data-anchor-id="data-folder-1"><strong>data folder</strong></h5>
+<p>This folder includes some dummy data for testing the scripts. Both correct data and bad data.</p>
+</section>
+<section id="output-folder" class="level5">
+<h5 class="anchored" data-anchor-id="output-folder"><strong>output folder</strong></h5>
+<p>This folder includes the outputted HTML &amp; Excel files of both the correct and wrong data.</p>
+</section>
 <section id="resources-folder" class="level5">
 <h5 class="anchored" data-anchor-id="resources-folder"><strong>resources folder</strong></h5>
 <p>This folder includes all the images/logos/local R packages needed to run the script in general.</p>
@@ -5002,18 +5010,26 @@ vertical-align: -.125em;
 <section id="main-folder" class="level5">
 <h5 class="anchored" data-anchor-id="main-folder"><em>main folder</em></h5>
 <p>This folder includes multiple R, Rmd, and batch files. Below is the explanation of each:</p>
-<p><strong>FAST TRACK</strong></p>
 <ul>
-<li><em>fast_track.R</em>:</li>
+<li><strong>FAST TRACK</strong>:
+<ul>
+<li><em>fast_track.R</em>: I automated the process to be able to run the whole script outside of R. this script is designated to initiate the project and render the Markdown.</li>
+<li><em>fast_track.bat</em>: Batch file to run the whole process from outside of R.</li>
+<li><em>rlc_sample_template_fast_track.Rmd</em>: The Markdown project that is called inside fast_track.R</li>
+</ul></li>
 </ul>
 </section>
 </section>
 </section>
 <section id="maintenance-1" class="level3">
 <h3 class="anchored" data-anchor-id="maintenance-1">Maintenance</h3>
+<p>There are no maintenance needed for this projects. However, in case of errors, the file to be tracked is the rlc_sample_template_fast_track.Rmd, where you will be able to run each chunck and see where is the error happening.</p>
 </section>
 <section id="next-steps-suggestions-1" class="level3">
 <h3 class="anchored" data-anchor-id="next-steps-suggestions-1">Next Steps Suggestions</h3>
+<p>One suggestion that I advice for this project is the ability to not only be limited by the REACH GEO RAND as input for the defined area of the study. This will enable to check any RLC sampling methodology for sanity and quality of the data collection.</p>
+<p>To change this, it will be required to find a way to provide the assessed households under the RLC Sampling methodology with a unique identifier for each cluster, and be able as well to define an area and input it in the script as a geometry polygon instead of the REACH GEO RAND.</p>
+<p>Most of the function inside src/rlc_quality_checks.R &amp; src/rlc_quality_checks_fast_track.R will be affected by this change, as well as the markdown file.</p>
 </section>
 </section>
 </section>

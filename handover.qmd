@@ -220,7 +220,7 @@ This folder includes multiple R, Rmd, and batch files. Below is the explanation 
   
 ### Maintenance
 
-There are no maintenance needed for this projects. However, in case of errors, the file to be tracked is the rlc_sample_template_fast_track.Rmd, where you will be able to run each chunck and see where is the error happening. 
+There are no maintenance needed for this projects. However, in case of errors, the file to be tracked is the rlc_sample_template_fast_track.Rmd, where you will be able to run each chunk and see where is the error happening. 
 
 ### Next Steps Suggestions
 
@@ -233,4 +233,27 @@ Most of the function inside src/rlc_quality_checks.R & src/rlc_quality_checks_fa
 # Projects
 
 ## Remote Mortality Studies in DRC
+
+### Content of the Repo
+
+This project contains two main folders, the **Cleaning** and the **Analysis** folders. 
+
+The cleaning mainly target the informant method data to prepare it for the Analysis. 
+
+The Analysis folder will be our main focus in this part as we are using it to output all our analysis for the study. 
+
+Below is the full explanation of the folder structure.
+
+#### data folder
+
+- *adjust_wall.xlsx*: This is a small excel file created to clean the shelter component for the Network Survival data during the calculations of the socio-economic weighting. 
+- *hh_survey_data.xlsx*: This is the HH survey long format data. 
+- *Informant_method_full_data_2023_06_01.xlsx*: This is the cleaned informant method data outputed from the Cleaning folder. 
+- *mortality_survey_clean_2023-09-16.xlsx*: This is the cleaned HH survey Data normal format (with all other loops included). Mainly used for the Network survival within HH. 
+- *network_survival_data_clean.xlsx*: This is the cleaned Network Survival Data. 
+- *Population DPS TANG023_ZS_AS_VILLAGE BICRS_revised.xlsx*: This is the Population Data for the ZS/AS used. 
+
+
+
+
 
