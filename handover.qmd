@@ -3,6 +3,21 @@ title: "PHU Data Specialist Instruction/Guidelines Handbook"
 author: "Abraham Azar"
 date: last-modified
 ---
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $(".abstract").hide();
+    $(".button").on("click", function () {
+        $(this).next(".abstract").slideToggle(400);
+    });
+});
+</script>
+
+<style>
+.abstract{text-align:justify; }
+.button{ text-align:justify; }
+</style>
+
 
 # Introduction
 
@@ -114,7 +129,7 @@ Github will again run another test of the Actions and pass a green badge to the 
 
 As all the templates are using there own specific renv environment that also include the impactR4PHU github package, all these renv of the different templates should be updated to the newest version of the package. 
 
-I created a python script that update them automatically instead of accessing them one by one. Here is a link to the python script [link](/files/pythonscript.py) (ADD THE FILE HERE)
+I created a python script that update them automatically instead of accessing them one by one. You will find the link to the python script inside the handover folder in the Sharepoint. 
 
 Once the script is done, please go again to your local branch where the new changes have been made and you will realise that all renv.lock files have now updated and require a new commit, push and pull for github. I know this is a bit of an annoying process, please go ahead and change it to your convenience. 
 
@@ -244,7 +259,7 @@ The Analysis folder will be our main focus in this part as we are using it to ou
 
 Below is the full explanation of the folder structure.
 
-#### data folder
+#### **data folder**
 
 - *adjust_wall.xlsx*: This is a small excel file created to clean the shelter component for the Network Survival data during the calculations of the socio-economic weighting. 
 - *hh_survey_data.xlsx*: This is the HH survey long format data. 
@@ -253,13 +268,103 @@ Below is the full explanation of the folder structure.
 - *network_survival_data_clean.xlsx*: This is the cleaned Network Survival Data. 
 - *Population DPS TANG023_ZS_AS_VILLAGE BICRS_revised.xlsx*: This is the Population Data for the ZS/AS used. 
 
-#### map folder
+#### **map folder**
 
 - *.csv/.xlsx*: These files are the outputs from the QGIS project to use for the Urban/Rural disaggregations. 
 - *rural_urban.qgz*: QGIS Project file. 
 - *Catchment_sites and Donnees_DRC_Tanganyika*: These folders include the shapefiles needed for the inputs to the QGIS project. 
 
-#### output folder
+#### **output folder**
+
+You will see in this folder 3 main folders:
+
+- *Descriptive*: This folder includes all descriptive analysis (tables/figures/maps) of the 4 conducted mortality studies (HH survey/Informant Studies/Network Survival/Network Survival within HH survey)
+- *Evaluation*: This folder includes the comparative analysis done between all the methods.
+- *new_analysis*: This folder was created after the email shared by Saeed Rahman for the extra analysis requested. 
+
+<div class='button' data-content="toggle-text"><a href="#8">Here are the set of extra analysis:</a></div>
+<div class='abstract'>
+<p style="margin-top: -0.1%;">
+1)	Effect of Recall Bias (Network Survival and Informant) – Deaths and Births
+a.	For each round and method of data collection (HH survey, informant method, kin network, neighbour network remote, neighbour network on survey), please produce a basic table and histograms showing the number of deaths reported per month.
+b.	Graphically, please produce 1 overall graph (histogram) per method, facet_wrap by round of reporting, and showing number of deaths reported per month. For the HH survey and Network Survival on HH survey, no need to facet_wrap by round of course.
+i.	Casey showed us a similar breakdown, so what I would expect to see is a even distribution of deaths per month on the HH survey method, but a decrease in the early months from the remote methods showing a limitation in reporting. 
+c.	Separately do the above also for births reported, though I imagine we can skip this for the informant method where the births were quite unclear. 
+d.	Analyze for each remote method at which month the decline in deaths appears prominent, compared to the household survey. Re-produce the crude mortality and birth rates  
+</p>
+<p style="margin-top: -2.5%;">
+2)	Effects of Age of Death on Results (Network Survival and Informant) – It’s possible certain age groups like under-5 children had less We saw a similar graphic from Casey, with 5 year age group bins for crude mortality, which we should try to re-create for our reporting. Ideally we are seeing much higher rates in under-5 and older populations. Please produce basic tables and graphs. 
+a.	Graphically, please produce a simple point graph of CDRs with confidence intervals, with the different age groups along the X-axis. Let’s produce the crude mortality for 5-year bins. For each method overall (HH survey, kin network, neighbor network remote, neighbor network on survey). 
+b.	Analyze the results – when comparing the CDR by age group across methods, are there where the pattern differs significantly compared to the HH survey results? If so, consider which mortality rates for which age groups is most comparable to the HH survey results. Re-run the overall mortality results for the remote methods excluding the ill-fitting age groups. 
+</p>
+<p style="margin-top: -2.5%;">
+3)	Effect of Rural/Urban on Results (Network Survival and Informant) – For both methods, to understand the effects of rural vs. urban sites on the effectiveness of the methods, for all methods. 
+a.	Please first identify and label for all methods (HH survey, network survival, ) which clusters, PSUs, or aire de santes can be considered rural vs. urban – harmonize across methods so we are comparing similar areas. I’d liaise with the DRC team on this, though broadly Kalemie and Nyunzu towns at most should be incorporating the urban areas. 
+b.	Produce birth and crude mortality rates overall for rural and urban areas for each of the methods, including HH survey for comparison. 
+c.	Produce table of incidence rate ratios and p-values for all comparisons here. 
+</p>
+<p style="margin-top: -2.5%;">
+4)	Effects of Different Kin Relationships on Network Survival Birth and Death Rates (Network Survival Kin Tie Definition) - Specific to Network Survival Kin network for HH survey and remote methods, let’s please produce a basic tables and graphics to understand the distribution of reported deaths and births based on the kin relationship. There should be slightly more kin relationships in the HH survey network survival compared to the remote network survival. What I sort of expect to see here is that the more nebulous relationships like cousins, nieces, nephews, may have lower CDRs and birth rates which could be causing underestimation. 
+a.	Tabularly, produce a table with the number of each type of kin reported, total person time for that kin group, and numbers of births, number of crude deaths, and number of under-5 deaths. 
+b.	Graphically, for each method please produce a simple point graph of CDRs with confidence intervals by each of the kin relationships. 
+c.	Separately, please produce a simple point graph of birth rates with confidence intervals by each of the kin relationships. 
+d.	Analyze the results of the above graphs – are there any kin groups that appear to be significantly reporting fewer births or deaths per person-time observed? If so, remove from analysis and re-produce the overall birth and death rates without those groups for comparison. Produce table of incidence rate ratios and p-values for these new comparisons. 
+</p>
+<p style="margin-top: -2.5%;">
+5)	Effects of Type of Key Informant on Informant Method Results (Informant Method) – both by the exact type, but also the broader categories of key informants that we grouped by (male leader, female leader, service provider)
+a.	Please produce table summarizing the number of each exact type of KI interviewed, and the total number of households reported on, numbers of births, crude deaths, and under-5 deaths reported by each type. Disaggregate also by ZS, and by Rural/Urban.
+b.	Produce a table showing the overlap in number and % in reporting between broad key informant types, consider the format of a 3x3 cross-tabulation with each of the 3 broad types along the horizontal and vertical axes.
+c.	Produce a table showing the number of interviews, deaths and person-time reported per round for each broad type of key informant. 
+d.	Graphically, produce a Venn Diagram type graphic showing the overlap in number and % in reporting between different broad key informants types. See below an example. 
+</p>
+<p style="margin-top: -2.5%;">
+6)	Capture-Recapture Analysis (Informant Method) – this will help us to determine the “completeness” of reporting of deaths by the informant method and give a proxy idea of the sensitivity of the method. I expect that overall it will be quite poor (50% or less sensitivity) but I suspect that when looking at rural areas alone, it will perform much better (80%+). 
+a.	This whole part I think is new to you, so let me know if you want to find some small time in the next few weeks to discuss together and walk through my past scripts. I’m sure there are a few improvements you can make in their efficiency as well. 
+b.	Some reference materials for you on capture-recapture and sensitivity
+i.	Conceptual and Assumptions of Capture Recapture - http://www.brixtonhealth.com/CRCaseFinding.pdf
+ii.	R coding, guidance, and data format requirements - https://hrdag.org/tech-notes/basic-mse.html
+iii.	Please also find attached code from my previous implementations of capture-recapture for this method from some trials in SSD. 
+c.	Please produce:
+i.	Table summarizing unique deaths, estimated ‘uncaptured’ deaths, and estimated sensitivity. Include overall, but also disaggregated by ZS, by rural/urban. 
+ii.	Produce and save graphics on the posterior probably estimates from the Bayesian Model Averaging. See an example below. 
+</p>
+
+</div>
 
 
+Inside the new_analysis folder, you will find two folders (graph / table) and inside them different numbered folders depending on the numbered requests.
 
+
+#### **resource folder**
+
+- *shapefil folder*: This folder include some shapefiles used inside the descriptive analysis folder. 
+- *daf_ files.xlsx*: These excel files are dedicated for the some extra indicator analysis for all HH/Informant Study/and Network Survival. The indicators are causes/location of deaths etc. 
+- *coverage_MSNA.xlsx*: Just an excel file showing the percentage of MSNA coverage in each Zone de sante
+- *death_removed.xlsx*: Excel files showing the death that were removed from the Informant study method after reviewing for duplications between methods. 
+- *death.xlsx*: Excel files showing the death that remained from the Informant study method after reviewing for duplications between methods. 
+- *.png*: files related for some logos/images.
+- *ns_round_weight.xlsx*: Excel file including the weight designed for each 2 month round of the Network Survival. 
+- *quick_cleaning_ns.xlsx*: Some extra cleaning for the Network Survival Data
+- *quota_sampling_2023-03-01.xlsx & quota_sampling_2023-03-01withtabac.xlsx*: Excel files including the population and the population for each cluster_ID for the Informant Study method (one with Tabac Congo and one without).
+- *sampling_frame_.xlsx*: Sampling frames of each method. 
+- *tool_.xlsx*: Kobo tool of each method
+- *weight_*: Weightings for each method. 
+
+#### **src folder**
+
+- *utils folder*: include all the utility functions used inside the scripts
+- *convert_cols_with_daf.R & fix_bugged_names.R*: No need to worry about these scripts (also utility scripts for the extra descriptive analysis).
+- *format_dataset_.R*: These scripts is where I am transforming/modelling/calling some extra functions for each method. 
+- *init_.R*: These scripts is where I am initiating each method for the analysis. 
+- *weight_ses.R*: This script is dedicated for the calculation of the Socio Economic Weight for the Network Survival. 
+- *new_analysis.R*: This script is for the new_analysis part asked by Saeed Rahman. 
+
+#### **temp folder**
+
+Only placeholder folder for the extra descriptive analysis. No need to worry about
+
+#### **main folder**
+
+- *run_analysis.R*: This script is to initiate the paths to each excel file and render the Markdown. 
+- *analysis_tabular.Rmd*: Markdown where all the analysis is happening. Can be run chunk by chunk, or all together from the run_analysis.R
+- *mortalityremote.excalidraw*: If you go to [Excalidraw](https://excalidraw.com/), you will be able to upload this file and look at some of the notes taken for the new_analysis part. 
