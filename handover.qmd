@@ -139,6 +139,8 @@ Once the script is done, please go again to your local branch where the new chan
 
 - Each template have a renv::update() function in the beginning which is responsible of updating the relevant packages to the latest requirements for the dependencies. However, R sometimes love to be hard and try to break everything. I realized this after receiving some weird **"make error"** from the field. Kindly keep an eye on that. 
 
+- Create a FAQ section compiled from the field.
+
 ### Next Steps Suggestions
 
 As the rotation within Impact is relatively high, you should consider having regular refreshers for missions/HQ Global Programs (GP) and Research Department (RDD) on the usage of the package and mainly the templates. 
