@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Abraham Azar">
-<meta name="dcterms.date" content="2024-10-14">
+<meta name="dcterms.date" content="2024-10-22">
 
 <title>PHU Data Specialist Instruction/Guidelines Handbook</title>
 <style>
@@ -4761,6 +4761,7 @@ vertical-align: -.125em;
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#main-groups-to-be-part-off" id="toc-main-groups-to-be-part-off" class="nav-link" data-scroll-target="#main-groups-to-be-part-off">Main Groups to be part off</a></li>
   <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools">Tools</a>
   <ul class="collapse">
   <li><a href="#impactr4phu" id="toc-impactr4phu" class="nav-link" data-scroll-target="#impactr4phu">impactR4PHU</a>
@@ -4769,6 +4770,7 @@ vertical-align: -.125em;
   <li><a href="#maintenance" id="toc-maintenance" class="nav-link" data-scroll-target="#maintenance">Maintenance</a></li>
   <li><a href="#requirements" id="toc-requirements" class="nav-link" data-scroll-target="#requirements">Requirements</a></li>
   <li><a href="#next-steps-suggestions" id="toc-next-steps-suggestions" class="nav-link" data-scroll-target="#next-steps-suggestions">Next Steps Suggestions</a></li>
+  <li><a href="#dependencies" id="toc-dependencies" class="nav-link" data-scroll-target="#dependencies">Dependencies</a></li>
   <li><a href="#knowledge-requirements-to-runmaintainenhance" id="toc-knowledge-requirements-to-runmaintainenhance" class="nav-link" data-scroll-target="#knowledge-requirements-to-runmaintainenhance">Knowledge requirements to run/maintain/enhance</a></li>
   </ul></li>
   <li><a href="#rlc-random-location-cluster-sampling-scripts" id="toc-rlc-random-location-cluster-sampling-scripts" class="nav-link" data-scroll-target="#rlc-random-location-cluster-sampling-scripts">RLC (Random Location Cluster) Sampling Scripts</a>
@@ -4811,7 +4813,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 14, 2024</p>
+      <p class="date">October 22, 2024</p>
     </div>
   </div>
   
@@ -4840,8 +4842,16 @@ vertical-align: -.125em;
 </style>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>This handbook is dedicated for the next Data Specialist taking over the position within the Public Health Unit in the Global Programmes department at HQ. The book dives into each aspect of the position, showcasing step by step guidances on how to run the existing tools and how to maintain them.</p>
+<p>This handbook is dedicated for the next Data Specialist taking over the position within the Public Health Unit in the Global Programmes department at HQ. The book dives into each aspect of the position, showcasing step by step guidance on how to run the existing tools and how to maintain them.</p>
 <p>I will try my best to be as detailed as possible, but do know that other data/technical people will also have answers to all your questions.</p>
+</section>
+<section id="main-groups-to-be-part-off" class="level1">
+<h1>Main Groups to be part off</h1>
+<p>There are some groups that are interesting to be part off as the new Data person from PHU.</p>
+<ul>
+<li>Data people HQ led by Giovanni Giuliari and Francesco Gizzarelli. This group includes all the data people from hq and discusses on a monthly basis ways of harmonizing data practices across different Global Program Units and Research Departments.</li>
+<li>R CoP led by Yann Say. All R enthusiasts across Impact Initiatives Globally.</li>
+</ul>
 </section>
 <section id="tools" class="level1">
 <h1>Tools</h1>
@@ -4954,7 +4964,22 @@ vertical-align: -.125em;
 <blockquote class="blockquote">
 <p><em>Better way than R templates?</em></p>
 </blockquote>
-<p>My original plan was to create one whole system (software) that compile all the processes and be even more user friendly then still running R codes. However, this takes so much time to implement and we didn’t have the time. So maybe this is something that can be done as a project.</p>
+<p>My original plan was to create one whole system (software) that compile all the processes and be even more user friendly then still running R codes. However, this takes so much time to implement and we didn’t have the time.</p>
+<p>However, here is the link to a draft I started called <a href="https://github.com/impact-initiatives/impactR4PHU_WEBAPP">impactR4PHU_WEBAPP</a></p>
+<p>It does include three sections:</p>
+<ul>
+<li><strong>impactR4PHU Sectors Processes</strong>: A section to run all sectors related quality/cleaning/analysis</li>
+<li><strong>IPHRA TOOL Builder</strong>: A section to build the kobo tool for IPHRA, depending on opening/closing modules and selecting specific questions from core to supplementary ones.</li>
+<li><strong>MSNA Integrated Tables</strong>: A section to build the Public Health Integrated Tables for MSNA cross outcome indicators analysis</li>
+</ul>
+</section>
+<section id="dependencies" class="level3">
+<h3 class="anchored" data-anchor-id="dependencies">Dependencies</h3>
+<p>Some of the projects included in the package have dependencies to other packages maintained by other Units within Impact Initiatives.</p>
+<ul>
+<li>PH integrated tables project is dependent on <strong>humind</strong> maintained by HPPU. For any inquiry, contact Sunhee Moraes</li>
+<li>IPHRA FSL IPC Table output inside FSL Descriptive Analysis is dependent on <strong>analysistools</strong> &amp; <strong>presentresults</strong> maintained by Yann Say.</li>
+</ul>
 </section>
 <section id="knowledge-requirements-to-runmaintainenhance" class="level3">
 <h3 class="anchored" data-anchor-id="knowledge-requirements-to-runmaintainenhance">Knowledge requirements to run/maintain/enhance</h3>
@@ -5059,7 +5084,7 @@ vertical-align: -.125em;
 <section id="content-of-the-repo" class="level3">
 <h3 class="anchored" data-anchor-id="content-of-the-repo">Content of the Repo</h3>
 <p>This project contains two main folders, the <strong>Cleaning</strong> and the <strong>Analysis</strong> folders.</p>
-<p>The cleaning mainly target the informant method data to prepare it for the Analysis.</p>
+<p>The cleaning mainly target the remote_moratlity_analysis data to prepare it for the Analysis.</p>
 <p>The Analysis folder will be our main focus in this part as we are using it to output all our analysis for the study.</p>
 <p>Below is the full explanation of the folder structure.</p>
 <section id="data-folder-2" class="level4">

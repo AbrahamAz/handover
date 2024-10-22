@@ -21,9 +21,16 @@ date: last-modified
 
 # Introduction
 
-This handbook is dedicated for the next Data Specialist taking over the position within the Public Health Unit in the Global Programmes department at HQ. The book dives into each aspect of the position, showcasing step by step guidances on how to run the existing tools and how to maintain them. 
+This handbook is dedicated for the next Data Specialist taking over the position within the Public Health Unit in the Global Programmes department at HQ. The book dives into each aspect of the position, showcasing step by step guidance on how to run the existing tools and how to maintain them. 
 
 I will try my best to be as detailed as possible, but do know that other data/technical people will also have answers to all your questions.
+
+# Main Groups to be part off
+
+There are some groups that are interesting to be part off as the new Data person from PHU. 
+
+- Data people HQ led by Giovanni Giuliari and Francesco Gizzarelli. This group includes all the data people from hq and discusses on a monthly basis ways of harmonizing data practices across different Global Program Units and Research Departments. 
+- R CoP led by Yann Say. All R enthusiasts across Impact Initiatives Globally. 
 
 # Tools
 
@@ -152,7 +159,21 @@ Because, they do use the plausibility and quality report, mainly FSL, to check t
 > *Better way than R templates?*
 
 My original plan was to create one whole system (software) that compile all the processes and be even more user friendly then still running R codes. However, this takes so much time to implement and we didn't have the time. 
-So maybe this is something that can be done as a project.
+
+However, here is the link to a draft I started called [impactR4PHU_WEBAPP](https://github.com/impact-initiatives/impactR4PHU_WEBAPP)
+
+It does include three sections:
+
+- **impactR4PHU Sectors Processes**: A section to run all sectors related quality/cleaning/analysis
+- **IPHRA TOOL Builder**: A section to build the kobo tool for IPHRA, depending on opening/closing modules and selecting specific questions from core to supplementary ones. 
+- **MSNA Integrated Tables**: A section to build the Public Health Integrated Tables for MSNA cross outcome indicators analysis
+
+### Dependencies
+
+Some of the projects included in the package have dependencies to other packages maintained by other Units within Impact Initiatives. 
+
+- PH integrated tables project is dependent on **humind** maintained by HPPU. For any inquiry, contact Sunhee Moraes
+- IPHRA FSL IPC Table output inside FSL Descriptive Analysis is dependent on **analysistools** & **presentresults** maintained by Yann Say. 
 
 ### Knowledge requirements to run/maintain/enhance
 
@@ -255,7 +276,7 @@ Most of the function inside src/rlc_quality_checks.R & src/rlc_quality_checks_fa
 
 This project contains two main folders, the **Cleaning** and the **Analysis** folders. 
 
-The cleaning mainly target the informant method data to prepare it for the Analysis. 
+The cleaning mainly target the remote_moratlity_analysis data to prepare it for the Analysis. 
 
 The Analysis folder will be our main focus in this part as we are using it to output all our analysis for the study. 
 
